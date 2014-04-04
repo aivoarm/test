@@ -1,0 +1,52 @@
+<h1>Posts</h1>
+
+<table>
+  
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  
+
+  
+    <% @posts.each do |post| %>
+      <tr class=post>
+        <td><%= post.title %></td>
+        <td><%= post.body %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+	  <tr class=comment>
+		  	<td><%= link_to 'New Comment', new_comment_path %></td>
+		</tr>
+  
+  <% @comments.where(post_id:post.id).each do |comment| %>
+   	
+    <tr class=comment>
+       
+        
+      
+      <td><%= comment.body %></td>
+      <td><%= link_to 'Show', comment %></td>
+      <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+      <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    
+	</tr>
+	
+  
+  <% end %>
+  
+  
+    <% end %>
+  
+  
+  
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>

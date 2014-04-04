@@ -1,0 +1,13 @@
+.post{
+	border-spacing: 10px;
+	
+	font-size:1.2em;
+	
+}
+.post tr td{
+	 border: 1px solid black; 
+}
+.comment{
+	font-size:.8em;
+	
+}
