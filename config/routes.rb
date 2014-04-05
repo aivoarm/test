@@ -1,4 +1,5 @@
 Blog::Application.routes.draw do
+  devise_for :users
   resources :comments
 
   resources :posts do
@@ -9,8 +10,12 @@ Blog::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   root 'posts#index'
 
+   #Last route in routes.rb
+   #match '*a', :to => 'errors#routing'
+
+  get '*path' => redirect('/')
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

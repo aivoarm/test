@@ -1,4 +1,11 @@
 class PostsController < ApplicationController
+  # In your controllers
+  before_filter :authenticate_user!, :except => [:some_action_without_auth]
+  # Access Current User
+  def index
+      @things = current_user.things
+  end
+  
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -6,6 +13,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @comments = Comment.all
+    @user = User.all
     
   end
 
